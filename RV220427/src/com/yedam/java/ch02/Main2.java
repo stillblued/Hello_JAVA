@@ -47,11 +47,11 @@ public class Main2 {
 					System.out.println(x + "/" + y + "=" + (x / y));
 					break;
 				case "?":
-					if( x > y) {
+					if (x > y) {
 						System.out.printf("%d가 %d보다 큽니다.\n", x, y);
-					}else if( x < y) {
-						System.out.printf("%d가 %d보다 작습다.\n", x, y);
-					}else {
+					} else if (x < y) {
+						System.out.printf("%d가 %d보다 작습나다.\n", x, y);
+					} else {
 						System.out.printf("%d와 %d는 같습니다.\n", x, y);
 					}
 					break;
