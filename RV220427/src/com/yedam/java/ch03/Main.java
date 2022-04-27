@@ -22,8 +22,6 @@ public class Main {
 		}
 		;
 
-		System.out.println("=======================");
-
 		int[] numList = new int[6];
 		int numCount = -1;
 		boolean selected = false;
