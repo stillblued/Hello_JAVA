@@ -44,7 +44,7 @@ public class Main3 {
 				random = 1;
 				System.out.println("☞ RPGgame 실행");
 			} else if (random == 0 && choice == 9) {
-				System.out.println("EXIT");
+				System.out.println("☞ RPGgame 종료");
 			} else {
 				System.out.println("다시 입력해주세요.");
 			}
@@ -64,7 +64,7 @@ public class Main3 {
 				random = 0;
 				System.out.println("☞ ArcadeGame 실행");
 			} else if (random == 1 && choice == 9) {
-				System.out.println("EXIT");
+				System.out.println("☞ RPGgame 종료");
 			} else {
 				System.out.println("다시 입력해주세요.");
 			}
