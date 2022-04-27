@@ -35,7 +35,7 @@ public class Main {
 
 			// 중복여부 확인
 			if (numCount > -1) {
-				for (int i = 0; i < numCount; i++) {
+				for (int i = 0; i <= numCount; i++) {
 					if (num == numList[i]) {
 						selected = true;
 						break;
