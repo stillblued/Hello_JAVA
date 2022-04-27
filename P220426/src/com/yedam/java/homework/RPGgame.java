@@ -21,31 +21,31 @@ public class RPGgame implements Keypad {
 
 	@Override
 	public void rightUpButton() {
-		if (mode == NORMAL_MODE) {
+		if (this.mode == Keypad.NORMAL_MODE) {
 			System.out.println("예담이 Jump한다.");
 		}
-		if (mode == HARD_MODE) {
+		if (this.mode == Keypad.HARD_MODE) {
 			System.out.println("예담이 Super Jump한다.");
 		}
 	}
 
 	@Override
 	public void rightDownButton() {
-		if (mode == NORMAL_MODE) {
+		if (this.mode == Keypad.NORMAL_MODE) {
 			System.out.println("예담의 일반 공격.");
 		}
-		if (mode == HARD_MODE) {
+		if (this.mode == Keypad.HARD_MODE) {
 			System.out.println("예담의 Critical hit!!");
 		}
 	}
 
 	@Override
 	public void changeMode() {
-		if (mode == NORMAL_MODE) {
-			mode = HARD_MODE;
+		if (this.mode == Keypad.NORMAL_MODE) {
+			this.mode = Keypad.HARD_MODE;
 			System.out.println("※HARD MODE※");
-		} else if (mode == HARD_MODE) {
-			mode = NORMAL_MODE;
+		} else if (this.mode == Keypad.HARD_MODE) {
+			this.mode = Keypad.NORMAL_MODE;
 			System.out.println("※NORMAL MODE※");
 		} else {
 			System.out.println("모드 변경 실패.");

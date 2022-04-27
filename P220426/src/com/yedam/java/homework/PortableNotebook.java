@@ -9,7 +9,7 @@ public class PortableNotebook implements Notebook, Tablet {
 	public String app;
 
 	public PortableNotebook(String document, String internet, String video, String app) {
-		this.MODE = NOTEBOOK_MODE;
+		this.MODE = Notebook.NOTEBOOK_MODE;
 		System.out.println("※NOTEBOOK MODE※");
 		this.document = document;
 		this.internet = internet;
@@ -24,10 +24,10 @@ public class PortableNotebook implements Notebook, Tablet {
 
 	@Override
 	public void useApp() {
-		if (MODE == NOTEBOOK_MODE) {
-			MODE = TABLET_MODE;
+		if (this.MODE == Notebook.NOTEBOOK_MODE) {
+			this.MODE = Tablet.TABLET_MODE;
 			System.out.println(app + "을 실행.");
-		} else if (MODE == TABLET_MODE) {
+		} else if (this.MODE == Tablet.TABLET_MODE) {
 			System.out.println(app + "을 실행.");
 		} else {
 			System.out.println("다시 입력하세요");
@@ -45,11 +45,11 @@ public class PortableNotebook implements Notebook, Tablet {
 	}
 
 	public void changeMode() {
-		if (MODE == NOTEBOOK_MODE) {
-			MODE = TABLET_MODE;
+		if (this.MODE == Notebook.NOTEBOOK_MODE) {
+			this.MODE = Tablet.TABLET_MODE;
 			System.out.println("※TABLET MODE※");
-		} else if (MODE == TABLET_MODE) {
-			MODE = NOTEBOOK_MODE;
+		} else if (this.MODE == Tablet.TABLET_MODE) {
+			this.MODE = Notebook.NOTEBOOK_MODE;
 			System.out.println("※NOTEBOOK MODE※");
 		} else {
 			System.out.println("다시 입력하세요.");
