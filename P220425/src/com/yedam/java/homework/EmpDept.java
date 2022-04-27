@@ -14,13 +14,9 @@ public class EmpDept extends Employee {
 
 	}
 
-	public String getDept() {
-		return dept;
-	}
-
 	@Override
 	public void getInformation() {
-		System.out.println("이름 : " + getName() + " | 연봉 : " + getaSalary() + " | 부서 : " + getDept());
+		System.out.println("이름 : " + this.name + " 연봉 : " + this.aSalary + " 부서 : " + this.dept);
 	}
 
 	public void print() {

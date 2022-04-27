@@ -20,12 +20,10 @@ public abstract class Culture {
 	}
 
 	// 총점
-	public void setTotalScore(int[] score) {
-		for (int i = 0; i < score.length; i++) {
-			this.totalS += score[i];
-			this.audNo = score.length;
-		}
-	};
+	public void setTotalScore(int score) {
+		this.audNo++;
+		this.totalS += score;
+	}
 
 	// 평점
 	public String getGrade() {
@@ -43,7 +41,7 @@ public abstract class Culture {
 			star = "☆";
 		}
 		return star;
-	};
+	}
 
 	// 정보 출력 추상 메소드
 	public abstract void getInformation();

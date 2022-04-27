@@ -16,32 +16,6 @@ public class Performance extends Culture {
 	}
 
 	@Override
-	public void setTotalScore(int[] score) {
-		for (int i = 0; i < score.length; i++) {
-			this.totalS += score[i];
-			this.audNo = score.length;
-		}
-	};
-
-	@Override
-	public String getGrade() {
-		double result = (this.totalS / this.audNo);
-		String star = null;
-		if (result > 4) {
-			star = "☆☆☆☆☆";
-		} else if (result > 3) {
-			star = "☆☆☆☆";
-		} else if (result > 2) {
-			star = "☆☆☆";
-		} else if (result > 1) {
-			star = "☆☆";
-		} else {
-			star = "☆";
-		}
-		return star;
-	};
-
-	@Override
 	public void getInformation() {
 		System.out.println(this.genre + "제목 : " + this.name);
 		System.out.println("감독 : " + this.dirNo);

@@ -17,7 +17,7 @@ public class StandardWeightInfo extends Human {
 	}
 
 	public double getStandardWeight() {
-		return (double) ((height - 100) * 0.9);
+		return (double) ((this.height - 100) * 0.9);
 	}
 
 }

@@ -23,17 +23,30 @@ public class Main {
 
 		// Question 3) Culture, Movie, Performance
 
-		Culture M = new Movie("추격자", 7, 5, "영화");
-		int[] scoreM = { 4, 4, 4, 4 };
-		M.setTotalScore(scoreM);
+		Movie movieInfo = new Movie("추격자", 7, 5, "영화");
+		movieInfo.setTotalScore(4);
+		movieInfo.setTotalScore(1);
+		movieInfo.setTotalScore(2);
+		movieInfo.setTotalScore(5);
 
-		Culture P = new Performance("지킬앤하이드", 9, 10, "공연");
-		int[] scoreP = { 5, 5, 5, 5, 4, 5, 5, 5, 4, 3 };
-		P.setTotalScore(scoreP);
+		movieInfo.getInformation();
+		System.out.println("================================");
 
-		M.getInformation();
-		System.out.println("=================");
-		P.getInformation();
+		Performance performance = new Performance("지킬앤하이드", 9, 10, "공연");
+
+		performance.setTotalScore(5);
+		performance.setTotalScore(5);
+		performance.setTotalScore(5);
+		performance.setTotalScore(5);
+		performance.setTotalScore(5);
+		performance.setTotalScore(5);
+		performance.setTotalScore(5);
+		performance.setTotalScore(5);
+		performance.setTotalScore(2);
+		performance.setTotalScore(1);
+		performance.setTotalScore(3);
+
+		performance.getInformation();
 
 	}
 

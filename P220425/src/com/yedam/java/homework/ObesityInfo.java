@@ -12,20 +12,25 @@ public class ObesityInfo extends StandardWeightInfo {
 
 	@Override
 	public void getInformation() {
-		System.out.print("이름 : " + name + " | 키 : " + height + " | 체중 : " + weight);
-		if (getObesity() < 90) {
-			System.out.println(" | 저체중입니다.");
-		} else if (getObesity() > 120) {
-			System.out.println(" | 비만입니다.");
-		} else {
-			System.out.println(" | 정상체중입니다.");
-		}
-		;
+		System.out.print("이름 : " + this.name + " | 키 : " + this.height + " | 체중 : " + this.weight + ", " + getObesity()
+				+ "입니다.");
+		getObesity();
 	}
 
-	public double getObesity() {
-		return (weight / getStandardWeight()) * 100; // ( * 비만도 : 체중/표준체중 * 100 )
+	public String getObesity() {
+		double bmi = (this.weight - this.getStandardWeight()) / this.getStandardWeight() * 100;
+		String obesity = null;
+		if (bmi <= 18.5) {
+			obesity = "저체중";
+		} else if (bmi <= 22.9) {
+			obesity = "정상";
+		} else if (bmi <= 24.9) {
+			obesity = "과체중";
+		} else {
+			obesity = "비만";
+		}
 
+		return obesity;
 	}
 
 }
