@@ -18,19 +18,17 @@ public class Homework2 {
 		Scanner sc = new Scanner(System.in);
 
 		try {
-			Outter: do {
+			do {
 				System.out.print("1과 100 사이의 값을 입력하세요 : ");
 				input = Integer.parseInt(sc.nextLine());
 				count++;
 				if (input == answer) {
 					System.out.println("맞췄습니다.");
 					System.out.printf("시도 횟수는 %d번입니다.", count);
-					break Outter;
-				}
-				if (input < answer) {
+					break;
+				} else if (input < answer) {
 					System.out.println("더 큰 수를 입력하세요.");
-				}
-				if (input > answer) {
+				} else if (input > answer) {
 					System.out.println("더 작은 수를 입력하세요.");
 				}
 			} while (true);
