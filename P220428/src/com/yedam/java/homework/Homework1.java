@@ -9,9 +9,9 @@ public class Homework1 {
 			try {
 				value = Integer.parseInt(strArray[i]);
 			} catch (NumberFormatException e) {
-				System.out.println("숫자로 변환할 수 없습니다.");
+				System.out.println("숫자 형식에 맞지 않습니다.");
 			} catch (ArrayIndexOutOfBoundsException e) {
-				System.out.println("실행 매개값의 수가 부족합니다.");
+				System.out.println("인덱스 범위를 벗어났습니다.");
 			} finally {
 				System.out.println(value);
 			}
