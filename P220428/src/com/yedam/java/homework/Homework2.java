@@ -21,7 +21,7 @@ public class Homework2 {
 			try {
 				System.out.print("1과 100 사이의 값을 입력하세요 : ");
 				input = Integer.parseInt(sc.nextLine());
-				++count;
+				count++;
 			} catch (NumberFormatException e) {
 				System.out.println("유효하지 않은 값입니다. 다시 값을 입력해주세요.");
 				continue;
