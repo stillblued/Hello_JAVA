@@ -7,15 +7,12 @@ public class Homework3 {
 		try {
 			method1();
 			System.out.println(1);
-			System.out.println(2);
-
 		} catch (NullPointerException e) {
-
+			System.out.println(2);
 		} finally {
 			System.out.println(3);
-			System.out.println(4);
 		}
-
+		System.out.println(4);
 	}
 
 	public static void method1() {
