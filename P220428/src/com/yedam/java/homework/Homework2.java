@@ -17,24 +17,26 @@ public class Homework2 {
 
 		Scanner sc = new Scanner(System.in);
 
-		try {
-			do {
+		do {
+			try {
 				System.out.print("1과 100 사이의 값을 입력하세요 : ");
 				input = Integer.parseInt(sc.nextLine());
 				++count;
-				if (input == answer) {
-					System.out.println("맞췄습니다.");
-					System.out.printf("시도 횟수는 %d번입니다.", count);
-					break;
-				} else if (input < answer) {
-					System.out.println("더 큰 수를 입력하세요.");
-				} else if (input > answer) {
-					System.out.println("더 작은 수를 입력하세요.");
-				}
-			} while (true);
-		} catch (NumberFormatException e) {
-			System.out.println("유효하지 않은 값입니다. 다시 값을 입력해주세요.");
-		}
+			} catch (NumberFormatException e) {
+				System.out.println("유효하지 않은 값입니다. 다시 값을 입력해주세요.");
+				continue;
+			}
+			if (input == answer) {
+				System.out.println("맞췄습니다.");
+				System.out.printf("시도 횟수는 %d번입니다.", count);
+				break;
+			} else if (input < answer) {
+				System.out.println("더 큰 수를 입력하세요.");
+			} else if (input > answer) {
+				System.out.println("더 작은 수를 입력하세요.");
+			}
+
+		} while (true);
 
 	}
 }
