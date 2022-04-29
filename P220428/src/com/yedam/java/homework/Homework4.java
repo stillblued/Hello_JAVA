@@ -19,6 +19,7 @@ public class Homework4 {
 			System.out.println(2);
 		} catch (RuntimeException e) {
 			System.out.println(3);
+			return;
 		} catch (Exception e) {
 			System.out.println(4);
 		} finally {
