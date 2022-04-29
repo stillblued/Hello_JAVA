@@ -21,7 +21,7 @@ public class Homework2 {
 			do {
 				System.out.print("1과 100 사이의 값을 입력하세요 : ");
 				input = Integer.parseInt(sc.nextLine());
-				count++;
+				++count;
 				if (input == answer) {
 					System.out.println("맞췄습니다.");
 					System.out.printf("시도 횟수는 %d번입니다.", count);
