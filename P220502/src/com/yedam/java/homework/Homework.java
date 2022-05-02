@@ -75,5 +75,5 @@ public class Homework {
 
 	public void check(String input2) { // 순서 길이 맞는지
 	}
-
+	// 갑자기 시험이 걱정되기 시작..해서 공부하러감..
 }
