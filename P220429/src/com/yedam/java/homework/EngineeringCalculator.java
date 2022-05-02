@@ -14,8 +14,8 @@ public class EngineeringCalculator extends Calculator {
 	@Override
 	public void printMenu() {
 		super.printMenu();
-		System.out.println("현재 연산식 : ");
 		getExpression();
+
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class EngineeringCalculator extends Calculator {
 	@Override
 	public void print() {
 		if (check()) {
-			this.getCalResult();
+			System.out.println("계산 결과 : " + getCalResult());
 		}
 	}
 
@@ -105,23 +105,23 @@ public class EngineeringCalculator extends Calculator {
 	}
 
 	public double getCalResult() { ///////// 연산식 결과....만들어야함...
-		double result = numList[0];
-		for (int i = 0; i <= operatorCount; i++) {
-			switch (operatorList[i]) {
+		double result = this.numList[0];
+		for (int i = 0; i <= this.operatorCount; i++) {
+			switch (this.operatorList[i]) {
 			case "+":
-				result += numList[i + 1];
+				result += this.numList[i + 1];
 				break;
 			case "-":
-				result -= numList[i + 1];
+				result -= this.numList[i + 1];
 				break;
 			case "*":
-				result *= numList[i + 1];
+				result *= this.numList[i + 1];
 				break;
 			case "/":
-				result /= numList[i + 1];
+				result /= this.numList[i + 1];
 				break;
 			case "%":
-				result %= numList[i + 1];
+				result %= this.numList[i + 1];
 				break;
 			}
 		}
@@ -129,10 +129,17 @@ public class EngineeringCalculator extends Calculator {
 	}
 
 	public void getExpression() {
-		for (int i = 0; i < numCount; i++) {
-			System.out.print(numList[i] + " ");
-			System.out.print(operatorList[i] + " ");
+		System.out.print("현재 연산식 : ");
+		for (int i = 0; i < this.numCount; i++) {
+			System.out.print(this.numList[i] + " ");
+			if (this.operatorCount != 0) {
+				for (int j = 0; j < this.operatorCount; j++) {
+					System.out.print(this.operatorList[j] + " ");
+				}
+			}
 		}
+		;
+
 	}
 
 }
