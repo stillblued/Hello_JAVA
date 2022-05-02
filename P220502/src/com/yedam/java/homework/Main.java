@@ -1,6 +1,10 @@
 package com.yedam.java.homework;
 
 public class Main {
+
+	public static void main(String[] args) {
+
+	}
 	/*
 	 * Question ] 다음 출력결과를 참고하여 문자를 이용한 스무고개를 구현하세요. - 프로그램이 실행되면 문제는 Orange, Game,
 	 * Phone, Smart 중 하나가 랜덤으로 선정되도록 합니다. - 메뉴 1.문자하나 ] 1) 문자 하나를 입력하여 문제를 구성하는 문자가
