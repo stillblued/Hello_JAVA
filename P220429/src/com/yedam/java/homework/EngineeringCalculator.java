@@ -82,11 +82,8 @@ public class EngineeringCalculator extends Calculator {
 
 	@Override
 	public void delete() {
-		if (this.numCount == 0) {
-			System.out.println("더이상 삭제할 숫자가 없습니다.");
-		}
-		if (this.operatorCount == 0) {
-			System.out.println("더이상 삭제할 연산자가 없습니다.");
+		if (this.numCount == 0 || this.operatorCount == 0) {
+			System.out.println("더이상 삭제할 숫자나 연산자가 없습니다.");
 		} else if (this.numCount > this.operatorCount) {
 			this.numList[this.numCount - 1] = 0;
 			this.numCount--;
@@ -104,7 +101,7 @@ public class EngineeringCalculator extends Calculator {
 		}
 	}
 
-	public double getCalResult() { ///////// 연산식 결과....만들어야함...
+	public double getCalResult() {
 		double result = this.numList[0];
 		for (int i = 0; i < this.operatorCount; i++) {
 			switch (this.operatorList[i]) {
@@ -129,19 +126,15 @@ public class EngineeringCalculator extends Calculator {
 	}
 
 	public void getExpression() {
-		System.out.print("현재 연산식 : ");
-		for (int i = 0; i < this.numCount; i++) {
-			System.out.print(this.numList[i] + " ");
-			for (int j = 0; j < this.operatorCount; j++) {
-				if (i == j) {
-					System.out.print(this.operatorList[i] + " ");
-				}
-				if (i == this.numCount - 1 && j > i) {
-					System.out.print(this.operatorList[j] + " ");
-
-				}
+		String result = " ";
+		for (int i = 0; i < this.numList.length; i++) {
+			if (i < numCount) {
+				result += String.valueOf(this.numList[i]);
 			}
-
+			if (i < this.operatorCount) {
+				result += this.operatorList[i];
+			}
 		}
+		System.out.println("현재 연산식 : " + result);
 	}
 }
