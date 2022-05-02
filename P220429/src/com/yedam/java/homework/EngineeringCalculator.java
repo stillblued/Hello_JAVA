@@ -29,54 +29,54 @@ public class EngineeringCalculator extends Calculator {
 
 	@Override
 	public void setInputNum(double num) {
-		this.numList[numCount] = num;
+		this.numList[this.numCount] = num;
 		this.numCount++;
 	}
 
 	@Override
 	public void print() {
-		if (check()) {
-			System.out.println("계산 결과 : " + getCalResult());
+		if (this.check()) {
+			System.out.println("계산 결과 : " + this.getCalResult());
 		}
 	}
 
 	@Override
 	public void plus() {
-		if (check()) {
-			this.operatorList[operatorCount] = "+";
-			operatorCount++;
+		if (this.check()) {
+			this.operatorList[this.operatorCount] = "+";
+			this.operatorCount++;
 		}
 	}
 
 	@Override
 	public void subtract() {
-		if (check()) {
-			this.operatorList[operatorCount] = "-";
-			operatorCount++;
+		if (this.check()) {
+			this.operatorList[this.operatorCount] = "-";
+			this.operatorCount++;
 		}
 	}
 
 	@Override
 	public void multiply() {
-		if (check()) {
-			this.operatorList[operatorCount] = "*";
-			operatorCount++;
+		if (this.check()) {
+			this.operatorList[this.operatorCount] = "*";
+			this.operatorCount++;
 		}
 	}
 
 	@Override
 	public void division() {
-		if (check()) {
-			this.operatorList[operatorCount] = "/";
-			operatorCount++;
+		if (this.check()) {
+			this.operatorList[this.operatorCount] = "/";
+			this.operatorCount++;
 		}
 	}
 
 	@Override
 	public void remain() {
-		if (check()) {
-			this.operatorList[operatorCount] = "%";
-			operatorCount++;
+		if (this.check()) {
+			this.operatorList[this.operatorCount] = "%";
+			this.operatorCount++;
 		}
 	}
 
@@ -105,23 +105,23 @@ public class EngineeringCalculator extends Calculator {
 	}
 
 	public double getCalResult() { ///////// 연산식 결과....만들어야함...
-		double result = numList[0];
-		for (int i = 0; i <= operatorCount; i++) {
-			switch (operatorList[i]) {
+		double result = this.numList[0];
+		for (int i = 0; i < this.operatorCount; i++) {
+			switch (this.operatorList[i]) {
 			case "+":
-				result += numList[i + 1];
+				result += this.numList[i + 1];
 				break;
 			case "-":
-				result -= numList[i + 1];
+				result -= this.numList[i + 1];
 				break;
 			case "*":
-				result *= numList[i + 1];
+				result *= this.numList[i + 1];
 				break;
 			case "/":
-				result /= numList[i + 1];
+				result /= this.numList[i + 1];
 				break;
 			case "%":
-				result %= numList[i + 1];
+				result %= this.numList[i + 1];
 				break;
 			}
 		}
@@ -136,7 +136,7 @@ public class EngineeringCalculator extends Calculator {
 				if (i == j) {
 					System.out.print(this.operatorList[i] + " ");
 				}
-				if (i == numCount - 1 && j > i) {
+				if (i == this.numCount - 1 && j > i) {
 					System.out.print(this.operatorList[j] + " ");
 
 				}
