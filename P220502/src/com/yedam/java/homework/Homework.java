@@ -71,9 +71,15 @@ public class Homework {
 	}
 
 	public void correct(String input1) { // 구성 문자 맞는지+대소문자 ~?
+		System.out.println("문자열을 구성하는 문자가 아닙니다.");
+		System.out.println("문자열을 구성하는 문자입니다.");
+		System.out.println("문자열을 구성하는 문자를 다 입력하셨습니다.");
 	}
 
 	public void check(String input2) { // 순서 길이 맞는지
+		System.out.print("O");
+		System.out.print("X");
+		System.out.println("정답입니다.");
 	}
 	// 갑자기 시험이 걱정되기 시작..해서 공부하러감..
 }
