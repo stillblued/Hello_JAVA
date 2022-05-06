@@ -15,6 +15,7 @@ public class App {
 //			st.push(no);
 //		}
 //		st.pop();
+//		st.show();
 
 		while (true) {
 			System.out.println("==============================");

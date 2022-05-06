@@ -21,7 +21,7 @@ public class Stack {
 	}
 
 	public static boolean isFull() {
-		if (top == size) {
+		if (top + 1 == size) {
 			return true;
 		} else {
 			return false;
@@ -37,14 +37,20 @@ public class Stack {
 
 	}
 
-	public void pop() {
+	public int pop() {
 		if (!isEmpty()) {
-			for (int i = top; i >= 0; i--) {
-				System.out.println(arr[i]);
-			}
+			return arr[top--];
 		} else {
-			System.out.println("스택이 비었습니다.");
+			return -1;
 		}
+	}
+
+	public void show() {
+		System.out.print("top : " + top + "\nstack : ");
+		for (int i = 0; i <= top; i++) {
+			System.out.println(arr[i] + " ");
+		}
+		System.out.println();
 	}
 
 }
