@@ -18,7 +18,7 @@ public class App {
 //		st.show();
 
 		while (true) {
-			System.out.println("==============================");
+			System.out.println("============================");
 			System.out.println("로또 몇 게임을 구매하시겠습니까?");
 			int number = scan.nextInt();
 			Lotto lt = new Lotto(number);
