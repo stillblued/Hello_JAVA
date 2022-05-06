@@ -2,55 +2,26 @@ package com.yedam.prj220506;
 
 public class Stack {
 
-	private static int size;
-	private static int[] arr;
-	private static int top;
+	private int[] stack = new int[10]; // 정수형 스택배열
+	private int top = 0;
 
-	public Stack(int size) {
-		this.size = size;
-		this.arr = new int[size];
-		this.top = -1;
-	}
-
-	public boolean isEmpty() {
-		if (top == -1) {
-			return true;
+	public void push(int n) {
+		if (top == stack.length) {
+			System.out.println("스택이 모두 찾습니다.");
 		} else {
-			return false;
+			stack[top] = n;
+			top++;
 		}
 	}
 
-	public static boolean isFull() {
-		if (top + 1 == size) {
-			return true;
+	public void pop() {
+		if (top < 0) {
+			System.out.println("스택이 비어 있습니다.");
+			top = 0;
 		} else {
-			return false;
+			top--;
+			System.out.println(stack[top]);
 		}
-	}
-
-	public static void push(int sc) {
-		if (!isFull()) {
-			arr[++top] = sc;
-		} else {
-			System.out.println("스택이 가득 찼습니다.");
-		}
-
-	}
-
-	public int pop() {
-		if (!isEmpty()) {
-			return arr[top--];
-		} else {
-			return -1;
-		}
-	}
-
-	public void show() {
-		System.out.print("top : " + top + "\nstack : ");
-		for (int i = 0; i <= top; i++) {
-			System.out.println(arr[i] + " ");
-		}
-		System.out.println();
 	}
 
 }
