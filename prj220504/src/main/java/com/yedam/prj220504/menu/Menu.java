@@ -50,7 +50,7 @@ public class Menu {
 
 		do {
 			mainTitle();
-			System.out.println("원하는 작업을 선택하세요?");
+			System.out.println("원하는 작업을 선택하세요.");
 			int code = sc.nextInt();
 			switch (code) {
 			case 1:
@@ -73,7 +73,7 @@ public class Menu {
 
 		do {
 			noticeTitle();
-			System.out.println("원하는 작업을 선택하세요?");
+			System.out.println("원하는 작업을 선택하세요");
 			int code = sc.nextInt();
 			switch (code) {
 			case 1:
@@ -104,7 +104,7 @@ public class Menu {
 
 		do {
 			lmsTitle();
-			System.out.println("원하는 작업을 선택하세요?");
+			System.out.println("원하는 작업을 선택하세요.");
 			int code = sc.nextInt();
 			switch (code) {
 			case 1:
