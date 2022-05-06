@@ -9,7 +9,7 @@ public class Lotto {
 
 	public Lotto(int number) {
 		super();
-		this.lotto = new int[7];
+		this.lotto = new int[6];
 		this.number = number;
 	}
 
@@ -33,12 +33,11 @@ public class Lotto {
 	}
 
 	public void showLotto() {
-
 		for (int i = 1; i < this.number + 1; i++) {
 			makeLotto();
 			System.out.println();
 			if (i % 5 == 0) {
-				System.out.println("============================");
+				System.out.println("----------------------------");
 			}
 		}
 		System.out.printf("금액은 %d000 원입니다.\n", this.number);

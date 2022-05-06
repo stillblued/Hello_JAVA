@@ -9,7 +9,6 @@ public class App {
 		Scanner scan = new Scanner(System.in);
 
 //		Stack st = new Stack(5);
-//
 //		for (int i = 0; i < 5; i++) {
 //			System.out.println("정수를 입력해주십시오.");
 //			int no = scan.nextInt();
@@ -17,10 +16,14 @@ public class App {
 //		}
 //		st.pop();
 
-		System.out.println("로또 몇 게임을 구매하시겠습니까?");
-		int number = scan.nextInt();
-		Lotto lt = new Lotto(number);
-		lt.showLotto();
+		while (true) {
+			System.out.println("==============================");
+			System.out.println("로또 몇 게임을 구매하시겠습니까?");
+			int number = scan.nextInt();
+			Lotto lt = new Lotto(number);
+			lt.showLotto();
+			System.out.println("행운을 빕니다~");
+		}
 
 	}
 }
