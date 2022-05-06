@@ -1,13 +1,16 @@
 package com.yedam.prj220506;
 
-import java.util.List;
-import java.util.Scanner;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 
 public class App {
 
 	public static void main(String[] args) {
 
-		Scanner scan = new Scanner(System.in);
+//		Scanner scan = new Scanner(System.in);
 
 //		Stack st = new Stack();
 //		for (int i = 0; i < 5; i++) {
@@ -39,8 +42,31 @@ public class App {
 //			again = bb.playagain();
 //		}
 
-		Diction ws = new Diction();
-		ws.run();
+//		Diction ws = new Diction();
+//		ws.run();
+
+		try {
+			Writer os = new FileWriter("c:\\temp\\a.txt");
+			String str = "abcdef";
+
+			os.write(str);
+
+			os.flush();
+			os.close();
+
+			Reader reader = new FileReader("c:\\temp\\a.txt");
+			char[] buffer = new char[100];
+			while (true) {
+				int charNum = reader.read(buffer);
+				if (charNum == -1)
+					break; // 파일 끝을 만나면 EOF
+				for (int i = 0; i < charNum; i++) {
+					System.out.println(buffer[i]);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 }
