@@ -510,6 +510,7 @@ public class Main extends JFrame {
 				case 1:
 					dogDancing.setVisible(false);
 					dogDefault.setVisible(true);
+					JOptionPane.showMessageDialog(null, "념념굿. ㅇㅅㅇb");
 					break;
 				case 2:
 					dogDefault.setVisible(false);
