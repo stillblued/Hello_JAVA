@@ -536,9 +536,10 @@ public class Restaurant extends JFrame {
 					explainMenu.removeAll();
 					explainMenu.setText(explain);
 
-					if (money > STANDARD * 100) {
+					if (money >= STANDARD * 100) {
 						endBtn.setVisible(true);
 						tab.setVisible(false);
+						JOptionPane.showMessageDialog(null, "티끌 모아 태산! 축하합니다~ >_<");
 					}
 					;
 				} else {
@@ -639,18 +640,15 @@ public class Restaurant extends JFrame {
 				}
 				Collections.sort(cook);
 				menuBox.addItem(Recipe.check(cook));
-
 				if (Recipe.check(cook) == "개밥") {
 					dogFood.setVisible(true);
 					resultFood.setVisible(false);
 					JOptionPane.showMessageDialog(null, "개밥이 되었다.. -10P");
-				} else if (money < 10) {
+				} else if (money == 0) {
 					tab.setVisible(false);
 					exitBtn.setVisible(true);
-					JOptionPane.showMessageDialog(null, "파산!");
-				}
-
-				else {
+					JOptionPane.showMessageDialog(null, "파산! 자바 배우러 갑시다~ ㅎㅎ");
+				} else {
 					dogFood.setVisible(false);
 					resultFood.setVisible(true);
 					JOptionPane.showMessageDialog(null, "요리 성공!! -10P");
