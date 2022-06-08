@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>formPrj/index.html</title>
+<style>
+label:nth-child(1) {
+	display: inline-block;
+	width: 100px;
+	text-align: left;
+	background-color: pink;
+}
+label:nth-of-type(2) {
+	display: inline-block;
+	width: 100px;
+	text-align: left;
+	background-color: yellow;
+}
+</style>
+
+</head>
+<body>
+
+	<form action="form.jsp" method="post">
+		<label for="last_name">이름:</label> <input type="text" id="last_name"
+			name="last_name" value="admin"><br> <input type="text"
+			name="email"><br> <input type="text" name="job_id"
+			value="IT_PROG" readonly><br> <input type="date"
+			name="hire_date"><br> <input type="hidden" name="userpw"
+			value="1234"><br> <input type="radio" name="gender"
+			value="M">남자 <input type="radio" name="gender" value="F">여자<br>
+		<input type="checkbox" name="hobby" value="read">독서 <input
+			type="checkbox" name="hobby" value="run">운동 <input
+			type="checkbox" name="hobby" value="cook">요리<br> <input
+			type="range" min="5" max="10" name="range"> <input
+			type="submit" value="전송"><br>
+	</form>
+
+	<form action="form.jsp" method="post">
+		<label for="name">이름:</label> <input type="text" id="name" name="name"
+			value="아무개"><br> <label for="id">아이디:</label> <input
+			type="text" id="id" name="id" value="abcd12345"><br> <label
+			for="psw">비밀번호:</label> <input type="password" id="psw" name="psw"
+			value="12345"><br> <label for="tel">연락처:</label> <input
+			type="tel" size="1" id="tel" name="tel1" value="010">- <input
+			type="tel" size="1" id="tel" name="tel2" value="1111">- <input
+			type="tel" size="1" id="tel" name="tel3" value="2222"><br>
+		<label for="gen">성별구분:</label> <input type="radio" id="gen" name="gen"
+			value="M">남, <input type="radio" id="gen" name="gen"
+			value="F">여<br> <label for="lg">사용언어:</label> <input
+			type="checkbox" id="lg" name="lg" value="kor">한글, <input
+			type="checkbox" id="lg" name="lg" value="eng">영어, <input
+			type="checkbox" id="lg" name="lg" value="jp">일어, <input
+			type="checkbox" id="lg" name="lg" value="ch">중국어<br> <label
+			for="int">자기소개:</label>
+		<textarea cols="30" rows="5" id="int" name="int">안녕하세요</textarea>
+		<br> <label for="region">국적:</label> <select size="1" id="region">
+			<option value="USA">USA</option>
+			<option value="KOREA">KOREA</option>
+			<option value="JAPAN">JAPAN</option>
+			<option value="CHINA">CHINA</option>
+		</select><br> <label for="food">좋아하는 음식:</label> <select size="4"
+			id="food" multiple>
+			<option value="USA">김치</option>
+			<option value="KOREA">불고기</option>
+			<option value="JAPAN">파전</option>
+			<option value="CHINA">비빔밥</option>
+		</select> <input type="submit" value="제출"><br>
+	</form>
+
+
+</body>
+</html>
