@@ -18,8 +18,7 @@ public class EmpDAO extends DAO {
 			psmt.setString(4, emp.getHireDate());
 			int r = psmt.executeUpdate();
 			System.out.println(r + "건 입력.");
-		
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -36,6 +35,31 @@ public class EmpDAO extends DAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				list.add(rs.getString("last_name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return list;
+	};
+
+	public List<Employees> empList() {
+		getConnect();
+		String sql = "select * from employees";
+		List<Employees> list = new ArrayList<>();
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				Employees emp = new Employees();
+				emp.setEmail(rs.getString("email"));
+				emp.setEmpId(rs.getInt("employee_id"));
+				emp.setHireDate(rs.getString("hire_date"));
+				emp.setJobId(rs.getNString("job_id"));
+				emp.setLastName(rs.getNString("last_name"));
+
+				list.add(emp);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
