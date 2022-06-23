@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border=1>
+		<thead id="empHead">
+			<th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+		</thead>
+		<tbody id="empList">
+		</tbody>
+	</table>
+
+	<script>
+		let xhtp = new XMLHttpRequest();
+		xhtp.open('get', 'EmpServlet');
+		xhtp.send();
+		xhtp.onload = function() {
+			let data = JSON.parse(this.responseText);
+			let list = document.getElementById('empList');
+			let fields = {
+					empId : "사원번호",
+					lastName : "사원이름",
+					email : "이메일"
+			};
+			
+			data.forEach(value => {
+				let tr = document.createElement('tr');
+				for (let field in value){
+					let td = document.createElement('td');
+					td.innerHTML = value[field];
+					tr.append(td);		
+				};
+				document.getElementById('empList').append(tr);
+			});
+		}
+	</script>
+</body>
+</html>
