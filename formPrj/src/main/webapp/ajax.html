@@ -16,26 +16,27 @@
 	</table>
 
 	<script>
+		let fields = {
+			empId: "사원번호",
+			lastName: "이름",
+			email: "이메일"
+		}
+	
 		let xhtp = new XMLHttpRequest();
 		xhtp.open('get', 'EmpServlet');
 		xhtp.send();
 		xhtp.onload = function() {
 			let data = JSON.parse(this.responseText);
 			let list = document.getElementById('empList');
-			let fields = {
-					empId : "사원번호",
-					lastName : "사원이름",
-					email : "이메일"
-			};
 			
-			data.forEach(value => {
+			data.forEach(emp => {
 				let tr = document.createElement('tr');
-				for (field in fields){
+				for (let field in fields){
 					let td = document.createElement('td');
-					td.innerHTML = value[field];
+					td.innerHTML = emp[field];
 					tr.append(td);		
 				};
-				document.getElementById('empList').append(tr);
+				list.append(tr);
 			});
 		}
 	</script>
