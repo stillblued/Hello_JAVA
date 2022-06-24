@@ -30,7 +30,7 @@
 			
 			data.forEach(value => {
 				let tr = document.createElement('tr');
-				for (let field in value){
+				for (field in fields){
 					let td = document.createElement('td');
 					td.innerHTML = value[field];
 					tr.append(td);		
