@@ -10,14 +10,17 @@
 			type="number" name="no"><br> 이름: <input type="text"
 			name="nm"><br> 연락처: <input type="text" name="ph"><br>
 		주소: <input type="text" name="ad"><br> 생년월일: <input
-			type="date" name="bt"><br> 이미지: <input type="text"
+			type="text" name="bt"><br> 이미지: <input type="text"
 			name="ig"><br> <input type="submit" value="전송">
 	</form>
 
 	<script>
-		
+		let xhtp = new XMLHttpRequest();
+		xhtp.open('get', 'member?cmd=insert&name=Ajax&addr=Incheon');
+		xhtp.send();
+		xhtp.onload = function() {
+			console.log(xhtp.responseText);
+		};
 	</script>
-
-
 </body>
 </html>
