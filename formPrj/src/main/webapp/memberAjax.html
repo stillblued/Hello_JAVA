@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 form {
 	border: 2px solid green;
@@ -28,16 +29,41 @@ form>input:nth-of-type(4) {
 </style>
 </head>
 <body>
-	<form action="../index.html" name="memberFrm">
-		<label for="memberId">회원번호</label> <input type="number"
-			name="memberId" id="memberId"><br> <label for="memberId">회원이름</label>
-		<input type="text" name="memberName" id="memberName"><br>
-		<label for="memberId">연락처</label> <input type="text" name="phone"
-			id="phone"><br> <label for="memberId">생년월일</label> <input
-			type="date" name="birth" id="birth"><br> <input
-			type="submit" value="추가"> <input type="button" value="수정">
-		<input type="reset" value="초기화"> <input type="button"
-			value="선택삭제">
+	<form action="member" name="memberFrm">
+		<label for="memberNo">회원번호</label> <input type="number"
+			name="memberNo" id="memberNo" readonly><br> <label
+			for="memberName">회원이름</label> <input type="text" name="memberName"
+			id="memberName"><br> <label for="phone">연락처</label> <input
+			type="text" name="phone" id="phone"><br> <label
+			for="address">주소</label> <input type="text" name="address"
+			id="address"><br> <label for="birth">생년월일</label> <input
+			type="date" name="birth" id="birth"><br> <label
+			for="image">사진</label> <input type="file" name="image" id="image"><br>
+		<input type="submit" value="추가"> <input type="reset"
+			value="초기화"> <input type="button" value="선택삭제">
 	</form>
+
+	<div id="show">
+		<table border="1">
+			<thead>
+				<tr>
+					<th>회원번호</th>
+					<th>회원이름</th>
+					<th>연락처</th>
+					<th>주소</th>
+					<th>생년월일</th>
+					<th>사진</th>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		
+	</script>
+
 </body>
 </html>
