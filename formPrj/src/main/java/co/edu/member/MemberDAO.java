@@ -37,7 +37,7 @@ public class MemberDAO extends DAO {
 	public MemberVO insertMember(MemberVO vo) {
 		getConnect();
 		String sql = "insert into member (memb_no, memb_name, memb_phone, memb_addr, memb_birth, memb_image) values(?,?,?,?,?,?)";
-		String seqSql = "select memb_seq.nextbal from dual";
+		String seqSql = "select memb_seq.nextval from dual";
 		try {
 			// 시퀀스
 			int nextSeq = 0;

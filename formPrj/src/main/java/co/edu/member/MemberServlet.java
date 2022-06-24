@@ -49,12 +49,36 @@ public class MemberServlet extends HttpServlet {
 			vo.setMembImage(image);
 
 			dao.insertMember(vo);
-
 			// {"retCode":"Success"}
 			response.getWriter().print(gson.toJson(vo));
 
+		} else if (cmd.equals("update")) {
+			// 19 - 전화번호
+
+			String numb = request.getParameter("no");
+			String name = request.getParameter("nm");
+			String phone = request.getParameter("ph");
+			String addr = request.getParameter("ad");
+			String birth = request.getParameter("bt");
+			String image = request.getParameter("ig");
+
+			MemberVO vo = new MemberVO();
+			vo.setMembNo(Integer.parseInt(numb));
+			vo.setMembName(name);
+			vo.setMembPhone(phone);
+			vo.setMembAddr(addr);
+			vo.setMembBirth(birth);
+			vo.setMembImage(image);
+
+			if (dao.updateMember(vo)) {
+				// {"retCode":"Success"}
+				response.getWriter().print("{\"retCode\": \"Success\"}");
+			} else {
+				// {"retCode":"Fail"}
+				response.getWriter().print("{\"retCode\":\"Fail\"}");
+			}
+
 		}
-		;
 
 	}
 
