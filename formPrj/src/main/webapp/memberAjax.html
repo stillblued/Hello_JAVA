@@ -62,7 +62,41 @@ form>input:nth-of-type(4) {
 	</div>
 
 	<script>
+		//추가버튼클릭
+		document.forms.memberFrm
+				.addEventListener(
+						'submit',
+						function(e) {
+							e.preventDefault();
+							console.log(this);
+							let mNo = this.memberNo.value;
+							let mNm = this.memberName.value;
+							let mAr = this.address.value;
+							let mPh = this.phone.value;
+							let mBi = this.birth.value;
+
+							let xhtp = new XMLHttpRequest();
+							xhtp.open('post', 'member');
+							xhtp.setRequestHeader('Content-type',
+									'application/x-www-form-urlencoded');
+							xhtp.send(`name=${mNm}&address=${mAr}&phone=${mPh}&birth=${mBi}&cmd=add`);
+							xhtp.onload = function() {
+								let result = JSON.parse(this.responseText);
+								console.log(result);
+								document.querySelector('#show tbody').append(makeTr(result));
+							}
+						});
+		let fields = ['membNo', 'membName', 'membPhone', 'membAddr', 'membBirth', 'membImage'];
 		
+		function makeTr(member) {
+			let tr = document.createElement('tr');
+			fields.forEach(field => {
+				let td = document.createElement('td');
+				td.innerHTML = member[field];
+				tr.append(td);
+			})
+			return tr;
+		};
 	</script>
 
 </body>

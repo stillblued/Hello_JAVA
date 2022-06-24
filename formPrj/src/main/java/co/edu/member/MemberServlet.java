@@ -1,6 +1,7 @@
 package co.edu.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -76,6 +77,52 @@ public class MemberServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/json;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+
+		// 입력 수정 삭제
+		String cmd = request.getParameter("cmd");
+
+		String membName = request.getParameter("name");
+		String membAddr = request.getParameter("address");
+		String membPhone = request.getParameter("phone");
+		String membBirth = request.getParameter("birth");
+		String membImg = request.getParameter("image");
+		MemberVO vo = new MemberVO();
+		vo.setMembBirth(membBirth);
+		vo.setMembAddr(membAddr);
+		vo.setMembImage(membImg);
+		vo.setMembName(membName);
+		vo.setMembPhone(membPhone);
+		MemberDAO dao = new MemberDAO();
+		Gson gson = new GsonBuilder().create();
+		PrintWriter out = response.getWriter();
+
+		if (cmd.equals("add")) {
+			dao.insertMember(vo);
+			out.print(gson.toJson(vo));
+
+		} else if (cmd.equals("modify")) {
+			if (dao.updateMember(vo)) {
+				out.print("{\"retCode\": \"Success\"}");
+			} else {
+				out.print("{\"retCode\": \"Fail\"}");
+			}
+			;
+
+		} else if (cmd.equals("remove")) {
+			String delNo = request.getParameter("delNo");
+			if (dao.deleteMember(Integer.parseInt(delNo))) {
+				out.print("{\"retCode\": \"Success\"}");
+			} else {
+				out.print("{\"retCode\": \"Fail\"}");
+			}
+			;
+
+		}
+		;
+
 	}
 
 }
