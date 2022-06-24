@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+form {
+	border: 2px solid green;
+}
+
+form>label {
+	display: inline-block;
+	width: 25%;
+	background-color: yellow;
+}
+
+#memberName {
+	background-color: aqua;
+}
+
+input[name="phone"] {
+	background-color: aquamarine;
+}
+
+form>input:nth-of-type(4) {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<form action="../index.html" name="memberFrm">
+		<label for="memberId">회원번호</label> <input type="number"
+			name="memberId" id="memberId"><br> <label for="memberId">회원이름</label>
+		<input type="text" name="memberName" id="memberName"><br>
+		<label for="memberId">연락처</label> <input type="text" name="phone"
+			id="phone"><br> <label for="memberId">생년월일</label> <input
+			type="date" name="birth" id="birth"><br> <input
+			type="submit" value="추가"> <input type="button" value="수정">
+		<input type="reset" value="초기화"> <input type="button"
+			value="선택삭제">
+	</form>
+</body>
+</html>
