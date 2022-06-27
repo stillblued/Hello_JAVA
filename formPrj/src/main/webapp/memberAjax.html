@@ -53,6 +53,7 @@ form>input:nth-of-type(4) {
 					<th>주소</th>
 					<th>생년월일</th>
 					<th>사진</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,6 +63,22 @@ form>input:nth-of-type(4) {
 	</div>
 
 	<script>
+	let ajax = new XMLHttpRequest();
+	ajax.open('get', 'member?cmd=list');
+	ajax.send();
+	ajax.onload = function () {
+		
+		let data = JSON.parse(this.responseText);
+		let tbody  = document.querySelector('#show tbody');
+		data.forEach(member => {
+			tbody.append(makeTr(member));
+		});
+	};
+	
+	
+	
+	
+	
 		//추가버튼클릭
 		document.forms.memberFrm
 				.addEventListener(
@@ -90,13 +107,42 @@ form>input:nth-of-type(4) {
 		
 		function makeTr(member) {
 			let tr = document.createElement('tr');
+			tr.setAttribute('id', member.membNo);
 			fields.forEach(field => {
 				let td = document.createElement('td');
-				td.innerHTML = member[field];
+				//null 0 undifined, '' => false 이외 true
+				td.innerHTML = member[field] ? member[field] : (!''? field == 'membImage' ? 'no img' : '' : '');
 				tr.append(td);
 			})
+			//삭제버튼
+			let btn = document.createElement('button');
+			btn.innerHTML = '삭제';
+			btn.addEventListener('click', rowDelete, false); //bubble, capture
+			let td = document.createElement('td');
+			td.append(btn);
+			tr.append(td);
 			return tr;
 		};
+		
+		function rowDelete() {
+			let delId = this.parentElement.parentElement.getAttribute('id');
+			let delAjax = new XMLHttpRequest();
+			delAjax.open('post', 'member');
+			delAjax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			delAjax.send(`cmd=remove&delNo=${delId}`);
+			delAjax.onload = function () {
+				let result = JSON.parse(delAjax.responseText);
+				//결과값 Success 
+				if (result.retCode == 'Success'){
+					document.getElementById(delId).remove();
+					alert('정상적으로 처리');
+				}else {
+					alert('처리중 에러발생');			
+				}
+			}
+		}
+		
+		
 	</script>
 
 </body>
