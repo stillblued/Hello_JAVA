@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+form {
+	border: 2px solid green;
+}
+
+form>label {
+	display: inline-block;
+	width: 25%;
+	background-color: yellow;
+}
+
+#memberName {
+	background-color: aqua;
+}
+
+input[name="phone"] {
+	background-color: aquamarine;
+}
+
+form>input:nth-of-type(4) {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<form action="memberUpload" name="memberFrm" method="post"
+		enctype="multipart/form-data">
+		<label for="memberNo">회원번호</label> <input type="number"
+			name="memberNo" id="memberNo" readonly><br> <label
+			for="memberName">회원이름</label> <input type="text" name="memberName"
+			id="memberName"><br> <label for="phone">연락처</label> <input
+			type="text" name="phone" id="phone"><br> <label
+			for="address">주소</label> <input type="text" name="address"
+			id="address"><br> <label for="birth">생년월일</label> <input
+			type="date" name="birth" id="birth"><br> <label
+			for="image">사진</label> <input type="file" name="image" id="image"><br>
+		<input type="submit" value="추가"> <input type="reset"
+			value="초기화"> <input type="button" value="선택삭제" id="deleteSel">
+		<input type="button" value="수정" id="modify">
+	</form>
+
+	<div id="show">
+		<table border="1">
+			<thead>
+				<tr>
+					<th>회원번호</th>
+					<th>회원이름</th>
+					<th>연락처</th>
+					<th>주소</th>
+					<th>생년월일</th>
+					<th>사진</th>
+					<th>삭제</th>
+					<th>선택</th>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+	let ajax = new XMLHttpRequest();
+	ajax.open('get', 'member?cmd=list');
+	ajax.send();
+	ajax.onload = function () {
+		
+		let data = JSON.parse(this.responseText);
+		let tbody  = document.querySelector('#show tbody');
+		data.forEach(member => {
+			tbody.append(makeTr(member));
+		});
+	};
+	
+		
+		
+		function makeTr(member) {
+			let tr = document.createElement('tr');
+			tr.setAttribute('id', member.membNo);
+			tr.addEventListener('click', showDetail);
+			fields.forEach(field => {
+				let td = document.createElement('td');
+				//null 0 undifined, '' => false 이외 true
+				td.innerHTML = member[field] ? member[field] : (!''? field == 'membImage' ? 'no img' : '' : '');
+				tr.append(td);
+			})
+			//삭제버튼
+			let btn = document.createElement('button');
+			btn.innerHTML = '삭제';
+			btn.addEventListener('click', rowDelete, false); //bubble, capture
+			let td = document.createElement('td');
+			td.append(btn);
+			tr.append(td);
+		
+			//체크박스
+			let chBox = document.createElement('input');
+			chBox.setAttribute('type', 'checkbox');
+			let td2 = document.createElement('td');
+			td2.append(chBox);
+			tr.append(td2);
+			return tr;
+		};
+		
+		
+		
+	
+		
+	</script>
+
+</body>
+</html>
