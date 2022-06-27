@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 @WebServlet("/member")
 public class MemberServlet extends HttpServlet {
@@ -106,16 +107,24 @@ public class MemberServlet extends HttpServlet {
 		} else if (cmd.equals("modify")) {
 			String mNo = request.getParameter("memNo");
 			vo.setMembNo(Integer.parseInt(mNo));
+			JsonObject obj = new JsonObject();
 
 			if (dao.updateMember(vo)) {
 				// out.print("{\"retCode\": \"Success\"}");
-				out.print("{\"membNo\": \"" + mNo + "\", \"membName\":\"" + membName + "\", \"membAddr\": \"" + membAddr
-						+ "\", \"membPhone\": \"" + membPhone + "\", \"membBirth\" : \"" + membBirth
-						+ "\", \"retCode\":\"Success\"}");
+
+//				out.print("{\"membNo\": \"" + mNo + "\", \"membName\":\"" + membName + "\", \"membAddr\": \"" + membAddr
+//						+ "\", \"membPhone\": \"" + membPhone + "\", \"membBirth\" : \"" + membBirth
+//						+ "\", \"retCode\":\"Success\"}");
+				obj.addProperty("membNo", mNo);
+				obj.addProperty("membName", membName);
+				obj.addProperty("membAddr", membAddr);
+				obj.addProperty("membPhone", membPhone);
+				obj.addProperty("membBirth", membBirth);
+				obj.addProperty("retCode", "Success");
 			} else {
-				out.print("{\"retCode\": \"Fail\"}");
+				obj.addProperty("retCode", "Fail");
 			}
-			;
+			out.print(gson.toJson(obj));
 
 		} else if (cmd.equals("remove")) {
 			String delNo = request.getParameter("delNo");
