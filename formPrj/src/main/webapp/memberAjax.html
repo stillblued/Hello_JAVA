@@ -40,7 +40,8 @@ form>input:nth-of-type(4) {
 			type="date" name="birth" id="birth"><br> <label
 			for="image">사진</label> <input type="file" name="image" id="image"><br>
 		<input type="submit" value="추가"> <input type="reset"
-			value="초기화"> <input type="button" value="선택삭제">
+			value="초기화"> <input type="button" value="선택삭제" id="deleteSel">
+		<input type="button" value="수정" id="modify">
 	</form>
 
 	<div id="show">
@@ -54,6 +55,7 @@ form>input:nth-of-type(4) {
 					<th>생년월일</th>
 					<th>사진</th>
 					<th>삭제</th>
+					<th>선택</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -75,22 +77,18 @@ form>input:nth-of-type(4) {
 		});
 	};
 	
-	
-	
-	
-	
 		//추가버튼클릭
 		document.forms.memberFrm
 				.addEventListener(
 						'submit',
 						function(e) {
 							e.preventDefault();
-							console.log(this);
 							let mNo = this.memberNo.value;
 							let mNm = this.memberName.value;
 							let mAr = this.address.value;
 							let mPh = this.phone.value;
 							let mBi = this.birth.value;
+							
 
 							let xhtp = new XMLHttpRequest();
 							xhtp.open('post', 'member');
@@ -108,6 +106,7 @@ form>input:nth-of-type(4) {
 		function makeTr(member) {
 			let tr = document.createElement('tr');
 			tr.setAttribute('id', member.membNo);
+			tr.addEventListener('click', showDetail);
 			fields.forEach(field => {
 				let td = document.createElement('td');
 				//null 0 undifined, '' => false 이외 true
@@ -121,6 +120,13 @@ form>input:nth-of-type(4) {
 			let td = document.createElement('td');
 			td.append(btn);
 			tr.append(td);
+		
+			//체크박스
+			let chBox = document.createElement('input');
+			chBox.setAttribute('type', 'checkbox');
+			let td2 = document.createElement('td');
+			td2.append(chBox);
+			tr.append(td2);
 			return tr;
 		};
 		
@@ -142,6 +148,83 @@ form>input:nth-of-type(4) {
 			}
 		}
 		
+		
+		//tr클릭
+		function showDetail() {
+			document.getElementById('memberNo').value = this.children[0].innerHTML;
+			document.getElementById('memberName').value = this.children[1].innerHTML;
+			document.getElementById('phone').value = this.children[2].innerHTML;
+			document.getElementById('address').value = this.children[3].innerHTML;
+			document.getElementById('birth').value = this.children[4].innerHTML.substring(0, 10);
+			
+		};
+		
+		//선택삭제
+		document.getElementById('deleteSel').addEventListener('click', deleteSelected);
+		
+		function deleteSelected() {
+		//체크true
+			let checkAll = document.querySelectorAll('table > tbody > tr > td > input:checked');
+			checkAll.forEach( elem => {
+				let delId = elem.parentElement.parentElement.getAttribute('id');
+				let delAjax = new XMLHttpRequest();
+				delAjax.open('post', 'member');
+				delAjax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				delAjax.send(`cmd=remove&delNo=${delId}`);
+				delAjax.onload = function () {
+					let result = JSON.parse(delAjax.responseText);
+					//결과값 Success 
+					if (result.retCode == 'Success'){
+						document.getElementById(delId).remove();
+						alert('정상적으로 처리');
+					}else {
+						alert('처리중 에러발생');			
+					}
+				}
+			});
+		}
+		
+		//수정
+		document.getElementById('modify').addEventListener('click', modifyFnc);
+		
+		function modifyFnc() {
+			let frm = document.forms.memberFrm;
+			let mNo = frm.memberNo.value;
+			let mNm = frm.memberName.value;
+			let mAr = frm.address.value;
+			let mPh = frm.phone.value;
+			let mBi = frm.birth.value;
+			
+
+			let xhtp = new XMLHttpRequest();
+			xhtp.open('post', 'member');
+			xhtp.setRequestHeader('Content-type',
+					'application/x-www-form-urlencoded');
+			xhtp.send(`memNo=${mNo}&name=${mNm}&address=${mAr}&phone=${mPh}&birth=${mBi}&cmd=modify`);
+			xhtp.onload = function() {
+				let result = JSON.parse(this.responseText);
+				if (result.retCode == 'Success'){
+				// formToTable(mNo);
+				let newTr = makeTr(result);
+				let oldTr = document.getElementById(mNo);
+				oldTr.parentNode.replaceChild(newTr, oldTr);
+				
+				} else {
+					alret('에러 발생');
+				}
+			}	
+		}
+		
+		function formToTable(mNo) {
+			let tr = document.getElementById(mNo);
+			tr.children[0].innerHTML = document.getElementById('memberNo').value; 
+			tr.children[1].innerHTML = document.getElementById('memberName').value; 
+			tr.children[2].innerHTML = document.getElementById('phone').value; 
+			tr.children[3].innerHTML = document.getElementById('address').value; 
+			tr.children[4].innerHTML = document.getElementById('birth').value; 
+
+	}
+	
 		
 	</script>
 

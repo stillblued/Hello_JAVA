@@ -104,8 +104,14 @@ public class MemberServlet extends HttpServlet {
 			out.print(gson.toJson(vo));
 
 		} else if (cmd.equals("modify")) {
+			String mNo = request.getParameter("memNo");
+			vo.setMembNo(Integer.parseInt(mNo));
+
 			if (dao.updateMember(vo)) {
-				out.print("{\"retCode\": \"Success\"}");
+				// out.print("{\"retCode\": \"Success\"}");
+				out.print("{\"membNo\": \"" + mNo + "\", \"membName\":\"" + membName + "\", \"membAddr\": \"" + membAddr
+						+ "\", \"membPhone\": \"" + membPhone + "\", \"membBirth\" : \"" + membBirth
+						+ "\", \"retCode\":\"Success\"}");
 			} else {
 				out.print("{\"retCode\": \"Fail\"}");
 			}
