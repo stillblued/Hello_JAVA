@@ -6,13 +6,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import co.edu.member.MemberVO;
+
 public class EmpDAO extends DAO {
 
 	// 일정정보
 
 	public List<CalendarVO> getSchedule() {
+		getConnect();
 		List<CalendarVO> list = new ArrayList<>();
 
+		try {
+			psmt = conn.prepareStatement("select * from full_calendar order by start_date");
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				CalendarVO cal = new CalendarVO();
+				cal.setTitle(rs.getString("title"));
+				cal.setStartDate(rs.getString("start_date"));
+				cal.setEndDate(rs.getString("end_date"));
+				list.add(cal);
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		;
 		return list;
 	}
 

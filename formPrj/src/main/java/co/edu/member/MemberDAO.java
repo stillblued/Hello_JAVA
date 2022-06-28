@@ -19,10 +19,10 @@ public class MemberDAO extends DAO {
 				MemberVO mem = new MemberVO();
 				mem.setMembNo(rs.getInt("memb_no"));
 				mem.setMembName(rs.getString("memb_name"));
-				mem.setMembPhone(rs.getNString("memb_phone"));
+				mem.setMembPhone(rs.getString("memb_phone"));
 				mem.setMembAddr(rs.getString("memb_addr"));
-				mem.setMembBirth(rs.getNString("memb_birth"));
-				mem.setMembImage(rs.getNString("memb_image"));
+				mem.setMembBirth(rs.getString("memb_birth"));
+				mem.setMembImage(rs.getString("memb_image"));
 				list.add(mem);
 			}
 		} catch (SQLException e) {
