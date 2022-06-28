@@ -60,6 +60,9 @@ public class MemberUpload extends HttpServlet {
 		dao.insertMember(vo);
 
 		System.out.println(mn);
+
+		// {"retCode": "Fullfilled"}
+		out.print("{\"retCode\": \"Fullfilled\"}");
 	}
 
 }

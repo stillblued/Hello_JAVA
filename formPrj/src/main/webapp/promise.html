@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>promise</title>
+</head>
+
+<body>
+
+	<div id="show">
+
+		<table border="1">
+			<thead>
+				<tr>
+					<th>회원번호</th>
+					<th>회원이름</th>
+					<th>연락처</th>
+					<th>주소</th>
+					<th>생년월일</th>
+					<th>사진</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+	</div>
+
+	<script>
+		//promise => fetch : pending, fullfilled, rejected, then(), catch()
+		let promise = new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				resolve('success'); //성공처리 콜백함수
+			}, 1000);
+		});
+
+		promise
+			.then(function (result) {
+				console.log(result);
+			})
+			.catch(function (error) {
+				console.log(error);
+			})
+
+		function asyncWork(value) {
+			return new Promise(function (resolve, reject) {
+				setTimeout(() => {
+					value -= 20;
+					if (value > 50) {
+						resolve(value);
+					} else {
+						reject(value);
+					}
+				}, 1000);
+			});
+		}
+
+		asyncWork(100).then((value) => {
+			console.log(value);
+			return asyncWork(value);
+		}).then((value) => {
+			console.log(value);
+			return asyncWork(value);
+		}).then((value) => {
+			console.log(value);
+			return asyncWork(value);
+		}).catch(error => {
+			console.log('catch:' + error);
+		});
+
+		fetch('member?cmd=list') //json
+			.then(function (result) {
+				return result.json(); // text->json
+			})
+			.then(function (result) {
+			
+				let tbody  = document.querySelector('#show tbody');
+				result.forEach(member => {
+					tbody.append(makeTr(member));
+				});
+			})
+			.catch(function (error) {
+				console.error(error);
+			})
+		
+		let fields = ['membNo', 'membName', 'membPhone', 'membAddr', 'membBirth', 'membImage'];	
+		function makeTr(member) {
+			let tr = document.createElement('tr');
+			tr.setAttribute('id', member.membNo);
+			fields.forEach(field => {
+				let td = document.createElement('td');
+				//null 0 undifined, '' => false 이외 true
+				td.innerHTML = member[field] ? member[field] : (!''? field == 'membImage' ? 'no img' : '' : '');
+				tr.append(td);
+			})
+			return tr;
+		};
+		
+	</script>
+
+
+</body>
+
+</html>
