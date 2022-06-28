@@ -25,7 +25,9 @@ public class FullCalendarServ extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/json;charset=utf-8");
+		
 		EmpDAO dao = new EmpDAO();
 		List<CalendarVO> schedules = dao.getSchedule();
 		
