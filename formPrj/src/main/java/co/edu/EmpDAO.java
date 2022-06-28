@@ -2,9 +2,42 @@ package co.edu;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmpDAO extends DAO {
+
+	// 일정정보
+
+	public List<CalendarVO> getSchedule() {
+		List<CalendarVO> list = new ArrayList<>();
+
+		return list;
+	}
+
+	// 부서정보, 인원정보
+
+	public Map<String, Integer> getDeptCnt() {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		getConnect();
+		String sql = "select department_name, count(1) "// 공백
+				+ "from employees e, departments d " + "where e.department_id = d.department_id "
+				+ "group by department_name";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				map.put(rs.getString(1), rs.getInt(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return map;
+	}
 
 	public void insertEmp(Employees emp) {
 		getConnect();
