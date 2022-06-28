@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			console.log(ent);
 		};
 
-
 		//get:url ,post:추가정보지정
 		fetch('memberUpload', {
 			method: 'post',
@@ -38,12 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			.catch(function(err) {
 				console.error(err);
 			})
-
-
-
 	});
-
-
 
 });
 
@@ -65,7 +59,7 @@ function makeTr(member) {
 	// 삭제버튼.
 	let btn = document.createElement('button');
 	btn.innerHTML = '삭제';
-	//btn.addEventListener('click', rowDelete, false); // bubble, capture
+	btn.addEventListener('click', rowDelete, false); // bubble, capture
 	let td = document.createElement('td');
 	td.append(btn);
 	tr.append(td);
@@ -78,3 +72,33 @@ function makeTr(member) {
 
 	return tr;
 }
+
+function rowDelete() {
+	let delId = this.parentElement.parentElement.getAttribute('id');
+	let formData = new FormData();
+	formData.append("cmd", "delete");
+	formData.append("delId", delId);
+
+	//id=32&name=hong
+	fetch('memberUpload', {
+		method: 'post',
+		headers: { 'Content-type': 'application/x-www-form-urlencoded' },
+		body: `cmd=delete&delId=${delId}`
+	})
+		.then(function(result) {
+			return result.json();
+		})
+		.then(function(result) {
+			//화면에서도 지우기
+			if (result.retCode == 'Success') {
+				document.getElementById(delId).remove();
+			}
+		})
+		.catch(function(err) {
+			console.error(err);
+		})
+
+
+}
+
+
