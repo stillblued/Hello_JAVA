@@ -40,8 +40,8 @@ public class EmpDAO extends DAO {
 		String sql = "delete from full_calendar where start_date =? and end_date =?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(2, start);
-			psmt.setString(3, end);
+			psmt.setString(1, start);
+			psmt.setString(2, end);
 
 			int r = psmt.executeUpdate();
 			if (r > 0) {
