@@ -18,8 +18,8 @@
 			
 			$.ajax({
 				url: './member',
-				method: 'post',
-				contentType : 'application/x-www-form-urlencoded', //multipart/form-data
+				method: 'get', //post
+				//contentType : 'application/x-www-form-urlencoded', //multipart/form-data
 				data: 'cmd=list', //parameter 호출페이지로 넘겨줄값 fdata
 				dataType : 'json' , //xml, html..
 				success: function (result) {
