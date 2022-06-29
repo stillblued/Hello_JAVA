@@ -10,8 +10,33 @@ import co.edu.member.MemberVO;
 
 public class EmpDAO extends DAO {
 
-	// 일정정보
+	// 입력기능
+	public boolean insertSchedule(CalendarVO vo) {
+		getConnect();
+		String sql = "insert into full_calendar (title, start_date, end_date) values(?,?,?)";
 
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getTitle());
+			psmt.setString(2, vo.getStartDate());
+			psmt.setString(3, vo.getEndDate());
+			int r = psmt.executeUpdate(); // 수정된건수
+			if (r > 0) {
+				return true; // 정상적 변경
+			}
+			;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		;
+		return false;
+	}
+
+	// 삭제기능
+
+	// 일정정보
 	public List<CalendarVO> getSchedule() {
 		getConnect();
 		List<CalendarVO> list = new ArrayList<>();
