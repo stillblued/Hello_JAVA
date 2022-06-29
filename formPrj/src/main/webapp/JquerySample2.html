@@ -35,7 +35,8 @@
                 })
 
                 tbody.append(
-                    $('<tr />').append(
+                    $('<tr />').attr('id', val.id)
+                    .append(
                         $('<td />').text(val.id),
                         $('<td />').text(val.name),
                         $('<td />').text(val.phone),
