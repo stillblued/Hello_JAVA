@@ -16,7 +16,8 @@
 			$.ajax({
 				url: './member',
 				method: 'get',
-				data: 'cmd=list',
+				data: 'cmd=list', //parameter 호출페이지로 넘겨줄값
+				dataType : 'json' , //xml, html..
 				success: function (result) {
 					let tbody = $('table > tbody');
 					$(result).each(function (idx, elem) {
