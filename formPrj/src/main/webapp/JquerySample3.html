@@ -21,7 +21,8 @@
 					let tbody = $('table > tbody');
 					$(result).each(function (idx, elem) {
 						let today = new Date();
-						let birth = new Date(elem.membBirth.substring(0, 1));
+						let birth = new Date(elem.membBirth.slice(0, 10));
+						console.log(today, birth);
 						tbody.append(
 							$('<tr />').append(
 								$('<td />').text(elem.membNo),
