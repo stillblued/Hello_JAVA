@@ -62,7 +62,14 @@ public class FullCalendarServ extends HttpServlet {
 			}
 
 		} else if (cmd.equals("delete")) {
+			String startDel = request.getParameter("start");
+			String endDel = request.getParameter("end");
 
+			if (dao.deleteSchedule(startDel, endDel)) {
+				response.getWriter().print("{\"retCode\": \"Success\"}");
+			} else {
+				response.getWriter().print("{\"retCode\": \"Fail\"}");
+			}
 		}
 
 	}
