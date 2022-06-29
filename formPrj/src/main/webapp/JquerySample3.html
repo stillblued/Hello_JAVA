@@ -2,39 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-    <script>
-        $(document).ready();
-    </script>
+	<script>
+		//XMLHttpRequest , fetch : Ajax(비동기) 
+		$(document).ready(function () {
+			$.ajax({
+				url: './member',
+				method: 'get',
+				data: 'cmd=list',
+				success: function (result) {
+					let tbody = $('table > tbody');
+					$(result).each(function (idx, elem) {
+						let today = new Date();
+						let birth = new Date(elem.membBirth.substring(0, 1));
+						tbody.append(
+							$('<tr />').append(
+								$('<td />').text(elem.membNo),
+								$('<td />').text(elem.membName),
+								$('<td />').text(elem.membPhone),
+								$('<td />').text(today.getFullYear() - birth.getFullYear()),
+								$('<td />').append($('<button />').text('삭제'))));
+
+					});
+				},
+				error: function (err) {
+					console.log(err);
+				}
+
+			});
+
+		});
+	</script>
 
 
 
 </head>
 
 <body>
-    <div id="show">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>회원아이디</th>
-                    <th>회원이름</th>
-                    <th>회원연락처</th>
-                    <th>회원나이</th>
-                    <th>삭제</th>
-                </tr>
-            </thead>
-            <tbody>
+	<div id="show">
+		<table border="1">
+			<thead>
+				<tr>
+					<th>회원아이디</th>
+					<th>회원이름</th>
+					<th>회원연락처</th>
+					<th>회원나이</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
 
-            </tbody>
-        </table>
-    </div>
+			</tbody>
+		</table>
+	</div>
 </body>
 
 </html>
