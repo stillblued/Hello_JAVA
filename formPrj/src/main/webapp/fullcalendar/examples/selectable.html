@@ -59,7 +59,7 @@
 						fetch('../../FullCalendarServ', {
 							method: 'post',
 							headers: { 'Content-type': 'application/x-www-form-urlencoded' },
-							body: `cmd=delete&start=${arg.startStr}&end=${arg.endStr}`		
+							body: `cmd=delete&title=${title}&start=${arg.startStr}`		
 						})
 							.then(result => result.json())
 							.then(result => arg.event.remove())

@@ -35,13 +35,13 @@ public class EmpDAO extends DAO {
 	}
 
 	// 삭제기능
-	public boolean deleteSchedule(String start, String end) {
+	public boolean deleteSchedule(String title, String start) {
 		getConnect();
-		String sql = "delete from full_calendar where start_date =? and end_date =?";
+		String sql = "delete from full_calendar where title =? and start_date =?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, start);
-			psmt.setString(2, end);
+			psmt.setString(1, title);
+			psmt.setString(2, start);
 
 			int r = psmt.executeUpdate();
 			if (r > 0) {
