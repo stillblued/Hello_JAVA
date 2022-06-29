@@ -34,7 +34,7 @@
 				selectMirror : true,
 				select : function(arg) {
 					var title = prompt('일정을 등록하세요');
-					console.log(title, arg);
+					
 					if (title) {
 						fetch('../../FullCalendarServ', {
 							method: 'post',
@@ -61,9 +61,9 @@
 							headers: { 'Content-type': 'application/x-www-form-urlencoded' },
 							body: `cmd=delete&start=${arg.startStr}&end=${arg.endStr}`		
 						})
-						.then(result => result.json())
-						.then(result => arg.event.remove())
-						.catch(err => console.log(err))
+							.then(result => result.json())
+							.then(result => arg.event.remove())
+							.catch(err => console.log(err))
 						
 					}
 				},
