@@ -21,6 +21,7 @@ $(document).ready(function() {
 function memberAddCallBack(e) {
 	e.preventDefault();
 	let fData = new FormData(e.target);
+
 	//ajax => 데이터 등록, 화면 구현 추가
 	$.ajax({
 		url: 'memberUpload',
@@ -28,8 +29,18 @@ function memberAddCallBack(e) {
 		method: 'post',
 		contentType: false,
 		processData: false,
+		dataType: 'json',
 		success: function(result) {
-			console.log(result);
+			if (result.retCode == 'Fullfilled') {
+
+				$(result).each(function (idx, elem) {
+					console.log(idx, elem);
+					
+				})
+
+			} else {
+				alert('처리중 에러');
+			};
 		},
 		error: function(err) {
 			console.error(err);

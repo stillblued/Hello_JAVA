@@ -30,6 +30,11 @@ public class MemberUpload extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/json;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+
+		
 
 		boolean isMulti = ServletFileUpload.isMultipartContent(request);
 		if (isMulti) {
@@ -64,10 +69,9 @@ public class MemberUpload extends HttpServlet {
 
 			dao.insertMember(vo);
 
-			System.out.println(mn);
 
 			// {"retCode": "Fullfilled"}
-			out.print("{\"retCode\": \"Fullfilled\"}");
+			out.print(gson.toJson(dao));
 		} else {
 			String cmd = request.getParameter("cmd");
 			String id = request.getParameter("delId");
