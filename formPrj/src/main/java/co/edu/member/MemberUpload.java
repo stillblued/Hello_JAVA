@@ -71,7 +71,7 @@ public class MemberUpload extends HttpServlet {
 
 
 			// {"retCode": "Fullfilled"}
-			out.print(gson.toJson(dao));
+			out.print(gson.toJson(vo));
 		} else {
 			String cmd = request.getParameter("cmd");
 			String id = request.getParameter("delId");

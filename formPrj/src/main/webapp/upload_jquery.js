@@ -31,13 +31,9 @@ function memberAddCallBack(e) {
 		processData: false,
 		dataType: 'json',
 		success: function(result) {
-			if (result.retCode == 'Fullfilled') {
-
-				
-
-			} else {
-				alert('처리중 에러');
-			};
+			
+			
+			
 		},
 		error: function(err) {
 			console.error(err);
