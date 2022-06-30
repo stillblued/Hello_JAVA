@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>도서정보</title>
+<style>
+form>label {
+	display: inline-block;
+	width: 25%;
+	background-color: gray;
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+	<div id="show">
+		<form action="bookServ" name="bookFrm" method="post"
+			enctype="application/x-www-form-urlencoded">
+			<label for="bookCode">도서코드</label> <input type="text" name="bookCode"
+				id="bookCode"><br> <label for="bookName" >도서명</label> <input
+				type="text" name="bookName" id="bookName"><br> <label
+				for="bookWriter">저자</label> <input type="text" name="bookWriter"
+				id="bookWriter" ><br> <label for="bookPublisher">출판사</label>
+			<input type="text" name="bookPublisher" id="bookPublisher"><br>
+			<label for="bookPrice">금액</label> <input type="number"
+				name="bookPrice" id="bookPrice"><br> <input
+				type="submit" value="저장"> <input type="button" value="선택삭제"
+				id="deleteSel">
+		</form>
+		<table id="tb" border=1>
+			<thead>
+				<tr>
+					<th>선택</th>
+					<th>도서코드</th>
+					<th>도서명</th>
+					<th>저자</th>
+					<th>출판사</th>
+					<th>가격</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+	<script src="book.js"></script>
+</body>
+
+</html>
