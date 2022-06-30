@@ -58,7 +58,6 @@ public class bookDAO extends DAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, delCode);
-
 			int r = psmt.executeUpdate();
 			if (r > 0) {
 				return true;

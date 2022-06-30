@@ -17,38 +17,29 @@ public class bookServ extends HttpServlet {
 
 	public bookServ() {
 		super();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		// 조회
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/json;charset=utf-8");
-
+		// 조회
 		String cmd = request.getParameter("cmd");
 		Gson gson = new GsonBuilder().create();
 		bookDAO dao = new bookDAO();
-
 		if (cmd.equals("list")) {
-
 			List<bookVO> list = dao.bookList();
 			response.getWriter().print(gson.toJson(list));
-
 		} 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/json;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-
 		// 입력 삭제
 		String cmd = request.getParameter("cmd");
-
 		String bookCode = request.getParameter("code");
 		String bookName = request.getParameter("name");
 		String bookAuth = request.getParameter("auth");
@@ -78,9 +69,7 @@ public class bookServ extends HttpServlet {
 				out.print("{\"retCode\": \"Fail\"}");
 			}
 			;
-
 		}
 		;
-
 	}
 }
