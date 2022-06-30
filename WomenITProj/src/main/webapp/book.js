@@ -30,8 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			let result = JSON.parse(this.responseText);
 			document.querySelector('#tb tbody').append(makeTr(result));
 		}
-
-
+		
+				this.no.value = '';
+				this.name.value = '';
+				this.writer.value = '';
+				this.publisher.value = '';
+				this.price.value = '';
 	}
 
 	let fields = ['bookCode', 'bookName', 'bookWriter', 'bookPublisher', 'bookPrice'];
