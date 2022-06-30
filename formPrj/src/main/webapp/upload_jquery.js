@@ -31,12 +31,7 @@ function memberAddCallBack(e) {
 		processData: false,
 		dataType: 'json',
 		success: function(result) {
-
-			let tbody = $('#show > table > tbody');
-			$(result).each(function(idx, elem) {
-				tbody.append(makeTr(elem));
-			});
-
+			showList(result);
 		},
 		error: function(err) {
 			console.error(err);
