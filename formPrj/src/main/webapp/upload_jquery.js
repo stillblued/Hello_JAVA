@@ -33,10 +33,7 @@ function memberAddCallBack(e) {
 		success: function(result) {
 			if (result.retCode == 'Fullfilled') {
 
-				$(result).each(function (idx, elem) {
-					console.log(idx, elem);
-					
-				})
+				
 
 			} else {
 				alert('처리중 에러');
