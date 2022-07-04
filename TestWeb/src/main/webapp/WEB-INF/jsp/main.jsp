@@ -8,7 +8,7 @@
 </head>
 <body>
 <div align="center">
-	<h1> WellCome to My Home</h1>
+	<h1> 메인입니다. </h1>
 </div>
 </body>
 </html>
