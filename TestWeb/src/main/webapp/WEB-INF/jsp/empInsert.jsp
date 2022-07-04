@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>empInsert.jsp</title>
+
+
 </head>
 <body>
 	<h1>사원등록</h1>
-	<form action="empServ" name="empFrm" method="get">
+	<form id="inputEmp" action="empServ" name="empFrm" method="get">
 		<label for="empId">사원번호</label>
 		<input type="number" name="empId" id="empId"><br>
 		<label for="lastName">사원이름</label>
