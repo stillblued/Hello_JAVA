@@ -77,22 +77,17 @@ public class DeptDAO extends DAO {
 	// 수정
 	public int deptUpdate(DeptVO vo) {
 		int cnt = 0;
-		try {
-			getConnect();
-			String sql = "insert into departments (department_id, department_name) values (?,?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getDeptId());
-			psmt.setString(2, vo.getDeptName());
-			cnt = psmt.executeUpdate();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
 		return cnt;
 	}
 
 	// 삭제
+	public int deptDelete(DeptVO vo) {
+		int cnt = 0;
+
+		return cnt;
+	}
+
+	
 
 }

@@ -27,7 +27,7 @@
 			id="deptId" value="<%=dept.getDeptId()%>"><br> <label
 			for="deptName">부서이름</label> <input type="text" name="deptName"
 			id="deptName" value="<%=dept.getDeptName()%>"><br>
-		<button type="button" onclick="validationform()">부서수정</button>
+		<button type="button" onclick="validationform()">부서명수정</button>
 
 	</form>
 
