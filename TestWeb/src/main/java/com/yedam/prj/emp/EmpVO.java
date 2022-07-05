@@ -7,6 +7,8 @@ public class EmpVO {
 	private String email;
 	private String hireDate;
 	private String jobId;
+	private String departmentId;
+	private String managerId;
 	public String getEmpId() {
 		return empId;
 	}
@@ -37,6 +39,21 @@ public class EmpVO {
 	public void setJobId(String jobId) {
 		this.jobId = jobId;
 	}
+	public String getDepartmentId() {
+		return departmentId;
+	}
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+	public String getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+	
+	
+	
 	
 	
 	

@@ -17,6 +17,10 @@ public class EmpInsertServ extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		EmpDAO empDao = new EmpDAO();
+		req.setAttribute("jobs", empDao.selectJobs()); //여러번 쓰이면 변수선언 할것
+		DeptDAO deptDao =new DeptDAO();
+		req.setAttribute("depts", deptDao.selectAll());
 		req.getRequestDispatcher("/WEB-INF/jsp/emp/empInsert.jsp").forward(req, resp);
 
 	}
@@ -25,6 +29,7 @@ public class EmpInsertServ extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
+		
 		
 		String id = req.getParameter("empId");
 		String name = req.getParameter("lastName");
