@@ -1,4 +1,4 @@
-<%@page import="com.yedam.prj.EmpVO"%>
+<%@page import="com.yedam.prj.emp.EmpVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -11,13 +11,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3>사원목록</h3>
+	<a href="TestWeb/empInsert">사원등록</a>
+<form>
+	<input name="departmentId">
+	<button>검색</button>
+</form>
 
+
+	
 	<table>
 		<thead>
 			<tr>
 				<th>사번</th>
 				<th>이름</th>
-				<th>급여</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -25,7 +33,7 @@
 				<tr>
 					<td>${vo.employeeId}</td>
 					<td>${vo.firstName}</td>
-					<td>${vo.salary}</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>

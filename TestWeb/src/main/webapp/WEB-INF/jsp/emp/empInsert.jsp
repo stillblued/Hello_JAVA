@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>사원등록</h1>
-	<form id="inputEmp" action="empServ" name="empFrm" method="get">
+	<form id="inputEmp" action="empInsert" name="empFrm" method="post">
 		<label for="empId">사원번호</label>
 		<input type="number" name="empId" id="empId"><br>
 		<label for="lastName">사원이름</label>
@@ -19,7 +19,7 @@
 		<input type="text" name="email" id="email"><br>
 		<label for="hireDate">입사일</label>
 		<input type="date" name="hireDate" id="hireDate"><br>
-		<label for="jobId">직책번호</label>
+		<label for="jobId">직책</label>
 		<input type="text" name="jobId" id="jobId"><br>
 		<input type="submit" value="저장">
 		<input type="button" value="선택삭제" id="deleteSel">

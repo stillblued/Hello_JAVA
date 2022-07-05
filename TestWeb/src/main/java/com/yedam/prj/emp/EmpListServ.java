@@ -1,4 +1,4 @@
-package com.yedam.prj;
+package com.yedam.prj.emp;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -20,8 +20,9 @@ public class EmpListServ extends HttpServlet {
 			throws ServletException, IOException {
 		
 		EmpDAO dao = new EmpDAO();
+		String id = request.getParameter("departmentId");
 		
-		request.setAttribute("list", dao.selectAll());
+		request.setAttribute("list", dao.selectAll(id));
 		request.getRequestDispatcher("/WEB-INF/jsp/empList.jsp").forward(request, response);
 		
 	}

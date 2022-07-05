@@ -1,4 +1,4 @@
-package com.yedam.prj;
+package com.yedam.prj.comm;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

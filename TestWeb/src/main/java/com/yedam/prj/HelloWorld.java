@@ -1,13 +1,15 @@
 package com.yedam.prj;
 
 import java.io.IOException;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/main")
+@WebServlet(urlPatterns = "/hello", loadOnStartup = 1)
 public class HelloWorld extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -16,16 +18,20 @@ public class HelloWorld extends HttpServlet {
 
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
+	@Override
+	public void destroy() {
+		System.out.println("제거됨");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		System.out.println("생성됨");
+	}
 
-		doGet(request, response);
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("서비스 실행");
+		response.getWriter().append("served at: ").append(request.getContextPath());
 	}
 
 }
