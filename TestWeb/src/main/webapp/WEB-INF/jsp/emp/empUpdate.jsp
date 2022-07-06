@@ -102,9 +102,7 @@
 			ArrayList<DeptVO> list2 = (ArrayList<DeptVO>) request.getAttribute("depts");
 			for (DeptVO depts : list2) {
 			%>
-			<input type="radio" name="deptId" value="<%=depts.getDeptId()%>"
-				<%if (depts.getDeptId().equals(vo.getDepartmentId())) {%>
-				checked="checked" <%}%>><%=depts.getDeptName()%>
+			<input type="radio" name="deptId" value="<%=depts.getDeptId()%>"><%=depts.getDeptName()%>
 			<%
 			}
 			%>
@@ -112,7 +110,9 @@
 		<br> <input type="submit" value="등록">
 	</form>
 	<script>
-		document.getElementsByName("jobId")[0].value  = "<%=vo.getJobId()%>";
+		document.getElementsByName("jobId")[0].value  = "<%=vo.getJobId()%>
+		";
+		document.querySelector("[name=deptId][value='vo.getDepartmentId()']").checked = true;
 	</script>
 
 
