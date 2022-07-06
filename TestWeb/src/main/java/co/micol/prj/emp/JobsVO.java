@@ -1,7 +1,6 @@
-package com.yedam.prj.emp;
+package co.micol.prj.emp;
 
 public class JobsVO {
-	
 	private String jobId;
 	private String jobTitle;
 	
@@ -17,8 +16,5 @@ public class JobsVO {
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
-	
-	
-	
 
 }

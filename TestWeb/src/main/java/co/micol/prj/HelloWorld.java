@@ -1,4 +1,4 @@
-package com.yedam.prj;
+package co.micol.prj;
 
 import java.io.IOException;
 
@@ -9,14 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/hello", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/Hello", loadOnStartup = 1)
 public class HelloWorld extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public HelloWorld() {
-		super();
-
-	}
 
 	@Override
 	public void destroy() {
@@ -28,10 +23,9 @@ public class HelloWorld extends HttpServlet {
 		System.out.println("생성됨");
 	}
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("서비스 실행");
-		response.getWriter().append("served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 }

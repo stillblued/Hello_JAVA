@@ -13,7 +13,7 @@
 		<servlet-name>HelloWorld</servlet-name>
 		<url-pattern>/aaa</url-pattern>
 	</servlet-mapping>
-
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

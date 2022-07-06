@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hmm</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-
-<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
-
-
 <div align="center">
 	<h1> WellCome to My Home</h1>
 </div>

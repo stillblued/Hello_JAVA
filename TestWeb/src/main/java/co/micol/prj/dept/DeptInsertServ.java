@@ -1,4 +1,4 @@
-package com.yedam.prj.dept;
+package co.micol.prj.dept;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,35 +11,31 @@ import javax.servlet.http.HttpServletResponse;
 public class DeptInsertServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public DeptInsertServ() {
-		super();
-
-	}
-
-	// 등록페이지 요청
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//등록페이지 요청
 		request.getRequestDispatcher("/WEB-INF/jsp/dept/deptInsert.jsp").forward(request, response);
 	}
 
-	// DB 등록 처리
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//한글
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		//DB 등록처리
+		String id = request.getParameter("departmentId");
+		String name = request.getParameter("departmentName");
 		
-		String id = request.getParameter("deptId");
-		String name = request.getParameter("deptName");
+		//vo에 파라미터 담기
 		DeptVO vo = new DeptVO();
 		vo.setDeptId(id);
 		vo.setDeptName(name);
 		
-		DeptDAO dao = new DeptDAO();
-		int cnt = dao.deptInsert(vo);
+		//DB 처리
+		DeptDAO deptDAO = new DeptDAO();
+		int cnt = deptDAO.deptInsert(vo);
 		
-		response.getWriter().append(cnt + "건이 등록됨");
-
+		//결과출력
+		response.getWriter()
+				.append(cnt+"건이 등록됨");
 	}
 
 }

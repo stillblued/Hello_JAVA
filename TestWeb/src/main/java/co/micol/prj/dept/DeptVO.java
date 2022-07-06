@@ -1,13 +1,25 @@
-package com.yedam.prj.dept;
+package co.micol.prj.dept;
 
 public class DeptVO {
-	
+	//필드
 	private String deptId;
 	private String deptName;
 	private String managerId;
-	private String locationId;
+	private String locId;
 	
+	//생성자
+	public DeptVO() {
+		super();
+	}
+	public DeptVO(String deptId, String deptName, String managerId, String locId) {
+		super();
+		this.deptId = deptId;
+		this.deptName = deptName;
+		this.managerId = managerId;
+		this.locId = locId;
+	}
 	
+	//getter, setter
 	public String getDeptId() {
 		return deptId;
 	}
@@ -26,16 +38,12 @@ public class DeptVO {
 	public void setManagerId(String managerId) {
 		this.managerId = managerId;
 	}
-	public String getLocationId() {
-		return locationId;
+	public String getLocId() {
+		return locId;
 	}
-	public void setLocationId(String locationId) {
-		this.locationId = locationId;
+	public void setLocId(String locId) {
+		this.locId = locId;
 	}
-	
-	
-
-	
 	
 	
 }
