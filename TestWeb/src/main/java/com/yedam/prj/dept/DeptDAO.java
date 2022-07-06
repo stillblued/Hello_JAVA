@@ -2,6 +2,7 @@ package com.yedam.prj.dept;
 
 import java.util.ArrayList;
 import com.yedam.prj.comm.DAO;
+import com.yedam.prj.emp.EmpVO;
 
 public class DeptDAO extends DAO {
 
@@ -77,7 +78,7 @@ public class DeptDAO extends DAO {
 	// 수정
 	public int deptUpdate(DeptVO vo) {
 		int cnt = 0;
-
+		
 		return cnt;
 	}
 
@@ -87,7 +88,5 @@ public class DeptDAO extends DAO {
 
 		return cnt;
 	}
-
-	
 
 }

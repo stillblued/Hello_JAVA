@@ -1,3 +1,4 @@
+<%@page import="com.yedam.prj.emp.EmpVO"%>
 <%@page import="com.yedam.prj.dept.DeptVO"%>
 <%@page import="com.yedam.prj.emp.JobsVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>empInsert.jsp</title>
+<title>empUpdate.jsp</title>
 
 <script>
 	function validateForm() {
@@ -50,38 +51,46 @@
 </script>
 
 <style type="text/css">
-
-#inputEmp > label {
-width : 150px;
-display: inline-block;
-background-color: #04AA6D;
-color: white;
-text-align: center;
-
+#inputEmp>label {
+	width: 150px;
+	display: inline-block;
+	background-color: #04AA6D;
+	color: white;
+	text-align: center;
 }
-
-
 </style>
 
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
-	<h1>사원등록</h1>
+	<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
+	<h1>사원수정</h1>
+	<%
+	EmpVO vo = (EmpVO) request.getAttribute("emp");
+	%>
+
+
 	<form id="inputEmp" action="empInsert" onsubmit="return validateForm()"
 		name="empFrm" method="post">
+
+
 		<label for="empId">사원번호</label> <input type="number" name="empId"
-			id="empId"><br> <label for="lastName">사원이름</label> <input
-			type="text" name="lastName" id="lastName"><br> <label
-			for="email">이메일</label> <input type="text" name="email" id="email"><br>
-		<label for="hireDate">입사일</label> <input type="date" name="hireDate"
-			id="hireDate"><br> <label for="jobId">직책</label> <select
-			name="jobId" id="jobId">
+			id="empId" readonly="readonly" value="<%=vo.getEmpId()%>"><br>
+
+		<label for="lastName">사원이름</label> <input type="text" name="lastName"
+			id="lastName" value="<%=vo.getLastName()%>"><br> <label
+			for="email">이메일</label> <input type="text" name="email" id="email"
+			value="<%=vo.getEmail()%>"><br> <label for="hireDate">입사일</label>
+		<input type="date" name="hireDate" id="hireDate"
+			value="<%=vo.getHireDate().substring(0, 10)%>"><br> <label
+			for="jobId">직책</label> <select name="jobId" id="jobId">
 			<%
 			ArrayList<JobsVO> list = (ArrayList<JobsVO>) request.getAttribute("jobs");
 			for (JobsVO jobs : list) {
 			%>
-			<option value="<%=jobs.getJobId()%>"><%=jobs.getJobTitle()%>
+			<option value="<%=jobs.getJobId()%>"
+				<%if (jobs.getJobId().equals(vo.getJobId())) {%> selected="selected"
+				<%}%>><%=jobs.getJobTitle()%>
 				<%
 				}
 				%>
@@ -94,7 +103,9 @@ text-align: center;
 			ArrayList<DeptVO> list2 = (ArrayList<DeptVO>) request.getAttribute("depts");
 			for (DeptVO depts : list2) {
 			%>
-			<input type="radio" name="deptId" value="<%=depts.getDeptId()%>"><%=depts.getDeptName()%>
+			<input type="radio" name="deptId" value="<%=depts.getDeptId()%>"
+				<%if (depts.getDeptId().equals(vo.getDepartmentId())) {%>
+				checked="checked" <%}%>><%=depts.getDeptName()%>
 			<%
 			}
 			%>

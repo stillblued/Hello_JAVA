@@ -8,7 +8,10 @@
 </head>
 <body>
 
-<%@include file="/WEB-INF/jsp/header.jsp" %>
+
+<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
+
+
 <div align="center">
 	<h1> WellCome to My Home</h1>
 </div>
