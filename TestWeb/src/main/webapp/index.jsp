@@ -7,6 +7,8 @@
 <title>Hmm</title>
 </head>
 <body>
+
+<%@include file="/WEB-INF/jsp/header.jsp" %>
 <div align="center">
 	<h1> WellCome to My Home</h1>
 </div>

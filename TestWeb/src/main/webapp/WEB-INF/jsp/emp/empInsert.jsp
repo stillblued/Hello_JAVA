@@ -49,10 +49,24 @@
 	}
 </script>
 
+<style type="text/css">
+
+#inputEmp > label {
+width : 150px;
+display: inline-block;
+background-color: blue;
+color: white;
+text-align: center;
+
+}
+
+
+</style>
 
 
 </head>
 <body>
+<%@include file="/WEB-INF/jsp/header.jsp" %>
 	<h1>사원등록</h1>
 	<form id="inputEmp" action="empInsert" onsubmit="return validateForm()"
 		name="empFrm" method="post">

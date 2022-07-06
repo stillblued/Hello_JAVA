@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="/WEB-INF/jsp/header.jsp" %>
 	<h3>사원목록</h3>
 	<a href="TestWeb/empInsert">사원등록</a>
 <form>
@@ -31,8 +32,8 @@
 		<tbody>
 			<c:forEach var="vo" items="${list}">
 				<tr>
-					<td>${vo.employeeId}</td>
-					<td>${vo.firstName}</td>
+					<td>${vo.empId}</td>
+					<td>${vo.lastName}</td>
 					
 				</tr>
 			</c:forEach>

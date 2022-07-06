@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.prj.dept.DeptDAO;
 import com.yedam.prj.dept.DeptVO;
 
-@WebServlet("/empInsert")
 
+
+@WebServlet("/empInsert")
 public class EmpInsertServ extends HttpServlet {
 
 	@Override

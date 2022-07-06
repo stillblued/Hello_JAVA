@@ -93,6 +93,28 @@ public class EmpDAO extends DAO {
 	}
 
 	// 수정
+	public int update(EmpVO vo) {
+		int cnt = 0;
+		try {
+			getConnect();
+			String sql = "update employees set (employee_id =? , last_name=?, email= ?, hire_date=?, job_id=?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getEmpId());
+			psmt.setString(2, vo.getLastName());
+			psmt.setString(3, vo.getEmail());
+			psmt.setString(4, vo.getHireDate());
+			psmt.setString(5, vo.getJobId());
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return cnt;
+	}
+	
+	
 
 	// 삭제
 

@@ -19,6 +19,7 @@ function validationform() {
 
 </head>
 <body>
+<%@include file="/WEB-INF/jsp/header.jsp" %>
 <form name = "frm" action = "DeptInsert" method = "get">
 	<label for="deptId">부서번호</label>
 	<input type = "number" name="deptId" id="deptId"><br>

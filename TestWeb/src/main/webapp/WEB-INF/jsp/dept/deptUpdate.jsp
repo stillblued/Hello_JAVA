@@ -19,6 +19,7 @@
 
 </head>
 <body>
+<%@include file="/WEB-INF/jsp/header.jsp" %>
 	<%
 	DeptVO dept = (DeptVO) request.getAttribute("dept");
 	%>

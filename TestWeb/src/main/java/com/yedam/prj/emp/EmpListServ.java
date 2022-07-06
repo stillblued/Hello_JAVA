@@ -23,7 +23,7 @@ public class EmpListServ extends HttpServlet {
 		String id = request.getParameter("departmentId");
 		
 		request.setAttribute("list", dao.selectAll(id));
-		request.getRequestDispatcher("/WEB-INF/jsp/empList.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/emp/empList.jsp").forward(request, response);
 		
 	}
 
