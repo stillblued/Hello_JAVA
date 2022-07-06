@@ -110,9 +110,8 @@
 		<br> <input type="submit" value="등록">
 	</form>
 	<script>
-		document.getElementsByName("jobId")[0].value  = "<%=vo.getJobId()%>
-		";
-		document.querySelector("[name=deptId][value='vo.getDepartmentId()']").checked = true;
+		document.getElementsByName("jobId")[0].value  = "<%=vo.getJobId()%>";
+		document.querySelector("[name=deptId][value='<%=vo.getDepartmentId()%>']").checked = true;
 	</script>
 
 
