@@ -13,10 +13,10 @@
 <body>
 <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
 	<h3>사원목록</h3>
-	<a href="TestWeb/empInsert">사원등록</a>
+
 <form>
 	<input name="departmentId">
-	<button>검색</button>
+	<button>부서 검색</button>
 </form>
 
 

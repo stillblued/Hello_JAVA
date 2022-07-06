@@ -11,7 +11,6 @@
 <body>
 <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
 	<h3>부서목록</h3>
-	<a href="DeptInsert">부서등록</a>
 
 	<table>
 
