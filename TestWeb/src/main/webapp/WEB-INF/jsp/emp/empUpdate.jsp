@@ -88,9 +88,8 @@
 			ArrayList<JobsVO> list = (ArrayList<JobsVO>) request.getAttribute("jobs");
 			for (JobsVO jobs : list) {
 			%>
-			<option value="<%=jobs.getJobId()%>"
-				<%if (jobs.getJobId().equals(vo.getJobId())) {%> selected="selected"
-				<%}%>><%=jobs.getJobTitle()%>
+			<option value="<%=jobs.getJobId()%>">
+				<%=jobs.getJobTitle()%>
 				<%
 				}
 				%>
@@ -112,5 +111,10 @@
 		</div>
 		<br> <input type="submit" value="등록">
 	</form>
+	<script>
+		document.getElementsByName("jobId")[0].value  = "<%=vo.getJobId()%>";
+	</script>
+
+
 </body>
 </html>
